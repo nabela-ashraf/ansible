@@ -1,0 +1,16 @@
+- name:  playbook-2
+  gather_facts: false
+  hosts:  web_servers
+  tasks:
+
+    - name: first_task
+      tags: update
+      apt: update_cache=true
+
+    - name: second_task
+      tags: install
+      apt:
+        name: nginx
+        state: latest
+
+    
