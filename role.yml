@@ -1,0 +1,5 @@
+- name: web_role_palybook
+  hosts: web
+  roles:
+    - web
+  
