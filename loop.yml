@@ -8,4 +8,4 @@
     - name: install latest version  
       apt:
         name: "{{ package_name }}"
-        state: "{{ package_state }}"
+        state: "{{ package_state }} "
