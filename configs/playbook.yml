@@ -1,22 +1,31 @@
 - name:  playbook
   hosts:  web_servers
+  # tasks:
+  #   - name: first_task
+  #     command: echo "Hello World"
+  #     when: ansible_facts["distribution"] == "Ubuntu"
+
+  #   - name: skip task 
+  #     debug:
+  #       msg: "This task will be skipped"
+  #     when: ansible_facts["distribution"] == "CentOS"
+
+  #   - name: faild ignored command 
+  #     command: /usr/bin/false
+  #     ignore_errors: true
+
+  #   - name: faild rescued command
+  #     block:
+  #       - command: /usr/bin/false
+  #     rescue:
+  #       - debug:
+  #           msg: "This task was rescued"
+
   tasks:
     - name: first_task
-      command: echo "Hello World"
-      when: ansible_facts["distribution"] == "Ubuntu"
-
-    - name: skip task 
-      debug:
-        msg: "This task will be skipped"
-      when: ansible_facts["distribution"] == "CentOS"
-
-    - name: faild ignored command 
-      command: /usr/bin/false
-      ignore_errors: true
-
-    - name: faild rescued command
-      block:
-        - command: /usr/bin/false
-      rescue:
-        - debug:
-            msg: "This task was rescued"
+      apt:
+        update_cache: true
+    - name: second_task
+      apt:
+        name: nginx
+        state: latest
