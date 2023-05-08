@@ -1,0 +1,11 @@
+- name:  variables
+  gather_facts: false
+  vars: 
+    package_name: nginx
+    package_state: latest
+  hosts:  web_servers
+  tasks:
+    - name: install 
+      apt:
+        name: "{{ package_name }}"
+        state: "{{ package_state }}"
