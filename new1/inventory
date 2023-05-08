@@ -4,3 +4,8 @@
 [database_servers]
 3.87.24.252
 3.87.24.253
+
+[group:children]
+web_servers
+database_servers
+```
